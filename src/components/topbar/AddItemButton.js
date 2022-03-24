@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineInbox } from "react-icons/ai";
-import { useModalUpdateToggler } from "../../ModalToggler";
+import { useModalUpdateToggler } from "../../contexts/ModalToggler";
 import { GoDiffAdded } from "react-icons/go";
 
 function AddItemButton() {

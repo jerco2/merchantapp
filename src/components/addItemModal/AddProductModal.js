@@ -3,6 +3,7 @@ import {
   useModalToggler,
   useModalUpdateToggler,
 } from "../../contexts/ModalToggler";
+import { useGetDataUpdate } from "../../contexts/GetDataContext";
 import { useConfirmationUpdate } from "../../contexts/ConfirmationContext";
 import { BsCashCoin } from "react-icons/bs";
 import { FaCoins } from "react-icons/fa";
@@ -11,6 +12,8 @@ import InputCategory from "./InputCategory";
 import Input from "./Input";
 import InputSizes from "./InputSizes";
 import Confirmation from "./Confirmation";
+import StartFirebase from "../../firebaseConfig";
+import { ref, set, push } from "firebase/database";
 
 function AddProductModal() {
   const [category, setCategory] = useState("");
@@ -25,6 +28,24 @@ function AddProductModal() {
   const showConfirmation = useConfirmationUpdate();
   const closeModal = useConfirmationUpdate();
   const closeItemCreation = useModalUpdateToggler();
+  const getData = useGetDataUpdate();
+
+  const createItem = () => {
+    const db = StartFirebase();
+    set(ref(db, "Items/" + productname), {
+      category,
+      productname,
+      price,
+      stocks,
+      cost,
+      size,
+    }).then(() => {
+      getData();
+      closeModal();
+      closeItemCreation();
+      setInputDefault();
+    });
+  };
 
   const handleSubmit = () => {
     if (
@@ -36,9 +57,9 @@ function AddProductModal() {
     ) {
       setError("Field empty - check your inputs");
     } else {
-      setInputDefault();
-      closeModal();
-      closeItemCreation();
+      createItem();
+
+      alert("Data created!");
     }
   };
 

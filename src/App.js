@@ -1,5 +1,5 @@
 import AddProductModal from "./components/addItemModal/AddProductModal";
-import MainContainer from "./components/mainContainer/MainContainer";
+import DataContainer from "./components/dataContainer/DataContainer";
 import Topbar from "./components/topbar/Topbar";
 import { ModalTogglerProvider } from "./contexts/ModalToggler";
 import { ConfirmationContextProdivder } from "./contexts/ConfirmationContext";
@@ -10,9 +10,11 @@ function App() {
     <ModalTogglerProvider>
       <ConfirmationContextProdivder>
         <GetDataContextProvider>
-          <Topbar />
-          <MainContainer />
-          <AddProductModal />
+          <div className={`overflow-x-hidden h-screen overflow-y-hidden`}>
+            <Topbar />
+            <DataContainer />
+            <AddProductModal />
+          </div>
         </GetDataContextProvider>
       </ConfirmationContextProdivder>
     </ModalTogglerProvider>

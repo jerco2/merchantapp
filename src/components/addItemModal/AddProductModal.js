@@ -13,7 +13,9 @@ import Input from "./Input";
 import InputSizes from "./InputSizes";
 import Confirmation from "./Confirmation";
 import StartFirebase from "../../firebaseConfig";
-import { ref, set, push } from "firebase/database";
+import { ref, set } from "firebase/database";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddProductModal() {
   const [category, setCategory] = useState("");
@@ -29,6 +31,8 @@ function AddProductModal() {
   const closeModal = useConfirmationUpdate();
   const closeItemCreation = useModalUpdateToggler();
   const getData = useGetDataUpdate();
+
+  const notify = () => toast("Successfully added new item");
 
   const createItem = () => {
     const db = StartFirebase();
@@ -58,8 +62,7 @@ function AddProductModal() {
       setError("Field empty - check your inputs");
     } else {
       createItem();
-
-      alert("Data created!");
+      notify();
     }
   };
 

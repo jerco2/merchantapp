@@ -8,7 +8,7 @@ function AddItemButton() {
 
   return (
     <div
-      className={`px-3 py-2 bg-gradient-to-tl from-orange-400 to-orange-200 
+      className={`mr-4 px-3 py-2 bg-gradient-to-tl from-orange-400 to-orange-200 
       hover:bg-gradient-to-tl hover:from-orange-500 hover:to-orange-300 rounded 
       text-white relative shadow cursor-pointer`}
       onClick={toggleModal}

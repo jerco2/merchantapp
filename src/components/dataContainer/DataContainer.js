@@ -10,29 +10,29 @@ function DataContainer() {
 
   const [itemsList, setItemsList] = useState([]);
 
-  const sortByCategory = () => {
-    setItemsList([]);
-    items.sort((a, b) => (a.category > b.category ? 1 : -1));
-    setItemsList(items);
-  };
+  // const sortByCategory = () => {
+  //   setItemsList([]);
+  //   items.sort((a, b) => (a.category > b.category ? 1 : -1));
+  //   setItemsList(items);
+  // };
 
-  const sortByName = () => {
-    setItemsList([]);
-    items.sort((a, b) => (a.productname > b.productname ? 1 : -1));
-    setItemsList(items);
-  };
+  // const sortByName = () => {
+  //   setItemsList([]);
+  //   items.sort((a, b) => (a.productname > b.productname ? 1 : -1));
+  //   setItemsList(items);
+  // };
 
-  const sortByPrice = () => {
-    setItemsList([]);
-    items.sort((a, b) => (a.price > b.price ? 1 : -1));
-    setItemsList(items);
-  };
+  // const sortByPrice = () => {
+  //   setItemsList([]);
+  //   items.sort((a, b) => (a.price > b.price ? 1 : -1));
+  //   setItemsList(items);
+  // };
 
-  const sortBySize = () => {
-    setItemsList([]);
-    items.sort((a, b) => (a.size > b.size ? 1 : -1));
-    setItemsList(items);
-  };
+  // const sortBySize = () => {
+  //   setItemsList([]);
+  //   items.sort((a, b) => (a.size > b.size ? 1 : -1));
+  //   setItemsList(items);
+  // };
 
   useEffect(() => {
     let isApiSubscribed = true;
@@ -46,7 +46,7 @@ function DataContainer() {
 
   useEffect(() => {
     setItemsList(items);
-  }, [itemsList]);
+  }, [items]);
 
   return (
     <div className="w-100 h-screen p-4 bg-orange-50">
@@ -54,10 +54,22 @@ function DataContainer() {
       <div
         className={`w-full bg-gradient-to-tl from-orange-300 to-orange-200 hidden tablet:flex p-3 rounded-t-lg text-white select-none text-sm font-semibold tracking-wider text-center`}
       >
-        <Header onClick={sortByCategory} label="CATEGORY" />
-        <Header onClick={sortByName} label="NAME" />
-        <Header onClick={sortByPrice} label="PRICE" />
-        <Header onClick={sortBySize} label="SIZE" />
+        <Header
+          // onClick={sortByCategory}
+          label="CATEGORY"
+        />
+        <Header
+          // onClick={sortByName}
+          label="NAME"
+        />
+        <Header
+          // onClick={sortByPrice}
+          label="PRICE"
+        />
+        <Header
+          // onClick={sortBySize}
+          label="SIZE"
+        />
         <Header label="STOCKS" />
         <Header label="COST" />
         <Header label="ACTION" />
